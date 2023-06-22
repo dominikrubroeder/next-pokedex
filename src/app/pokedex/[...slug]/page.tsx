@@ -1,15 +1,26 @@
 import {getPokemonData} from "../../../../lib/data";
 import Image from "next/image";
+import PokemonStats from "@/app/components/pokemon/stats";
 
 export default async function Pokemon({params}: { params: { slug: string } }) {
     const data = await getPokemonData(params.slug)
-    return <main>
+    return <main className="grid gap-8">
         <section className="mx-auto max-w-screen-lg text-center">
             {data.sprites.other?.["official-artwork"].front_default &&
                 <Image src={data.sprites.other["official-artwork"].front_default} alt={data.name} width={244}
                        height={244}
                        className="object-fit mx-auto" priority/>}
-            <h1 className="text-4xl font-bold">{data.name}</h1>
+            <div className="grid gap-2">
+                <h1 className="text-4xl font-bold">{data.name}</h1>
+                <div className="flex gap-2 justify-center">
+                    {data.types.map((type, index) => <div key={index} className="rounded-3xl p-1.5 px-3 border text-xs">{type.type.name}</div>)}
+                </div>
+            </div>
+        </section>
+
+        <section className="mx-auto max-w-sm w-full text-center grid gap-2">
+            <h2>Stats</h2>
+            <PokemonStats stats={data.stats} />
         </section>
     </main>
 }
