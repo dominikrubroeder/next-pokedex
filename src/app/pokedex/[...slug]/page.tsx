@@ -1,17 +1,19 @@
-import {getPokemonData} from "../../../../lib/data";
+import {getPokemonData, getPokemonSpeciesData} from "../../../../lib/data";
 import Image from "next/image";
 import PokemonStats from "@/app/components/pokemon/stats";
 
 export default async function Pokemon({params}: { params: { slug: string } }) {
     const data = await getPokemonData(params.slug)
+    const speciesData = await getPokemonSpeciesData(params.slug)
+
     return <main className="grid gap-8">
-        <section className="mx-auto max-w-screen-lg text-center">
+        <section className="mx-auto max-w-screen-lg">
             {data.sprites.other?.["official-artwork"].front_default &&
                 <Image src={data.sprites.other["official-artwork"].front_default} alt={data.name} width={244}
                        height={244}
                        className="object-fit mx-auto" priority/>}
             <div className="grid gap-2">
-                <h1 className="text-4xl font-bold">{data.name}</h1>
+                <h1 className="text-4xl font-bold mx-auto">{data.name}</h1>
                 <div className="flex gap-2 justify-center">
                     {data.types.map((type, index) => <div key={index} className="rounded-3xl p-1.5 px-3 border text-xs">{type.type.name}</div>)}
                 </div>
@@ -21,6 +23,27 @@ export default async function Pokemon({params}: { params: { slug: string } }) {
         <section className="mx-auto max-w-sm w-full text-center grid gap-2">
             <h2>Stats</h2>
             <PokemonStats stats={data.stats} />
+        </section>
+
+        <section className="mx-auto grid gap-2">
+            <h2>Flavored Text</h2>
+            <div className="flex gap-4">
+            <div>
+                <div className="font-bold">Edition</div>
+                <hr className="mb-4" />
+                {speciesData.flavor_text_entries.map((entry, index) => {
+                    if (entry.language.name === 'en') return <div key={index}>{entry.version.name}</div>
+                })}
+            </div>
+
+            <div>
+                <div className="font-bold">Text</div>
+                <hr className="mb-4" />
+                {speciesData.flavor_text_entries.map((entry, index) => {
+                    if (entry.language.name === 'en') return <div key={index}>{entry.flavor_text}</div>
+                })}
+            </div>
+            </div>
         </section>
     </main>
 }

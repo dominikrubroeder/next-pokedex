@@ -215,3 +215,15 @@ export async function getPokemonData(pokemonName: string): Promise<PokemonApiRes
 
     return res.json()
 }
+
+export async function getPokemonSpeciesData(pokemonName: string) {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
+
+    // Recommendation: handle errors
+    if (!res.ok) {
+        // This will activate the closest `error.js` Error Boundary
+        throw new Error('Failed to fetch data')
+    }
+
+    return res.json()
+}
