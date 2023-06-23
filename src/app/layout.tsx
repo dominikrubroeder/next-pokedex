@@ -17,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <header className="flex gap-2 p-4">
-          <Link href="/">Home</Link>
-          <Link href="/pokedex">Pokédex</Link>
+      <header className="p-4">
+          <nav className="flex items-center gap-2">
+              <Link href="/">Home</Link>
+              <Link href="/pokedex">Pokedex</Link>
+          </nav>
       </header>
       {children}
       </body>
