@@ -1,229 +1,233 @@
 export interface PokedexApiResponse {
-    count: number
-    next: string
-    previous: any
-    results: Result[]
+  count: number;
+  next: string;
+  previous: any;
+  results: Result[];
 }
 
 export interface Result {
-    name: string
-    url: string
+  name: string;
+  url: string;
 }
 
 export interface PokemonApiResponse {
-    abilities: Ability[];
-    base_experience: number;
-    forms: Species[];
-    game_indices: GameIndex[];
-    height: number;
-    held_items: HeldItem[];
-    id: number;
-    is_default: boolean;
-    location_area_encounters: string;
-    moves: Move[];
-    name: string;
-    order: number;
-    past_types: any[];
-    species: Species;
-    sprites: Sprites;
-    stats: Stat[];
-    types: Type[];
-    weight: number;
+  abilities: Ability[];
+  base_experience: number;
+  forms: Species[];
+  game_indices: GameIndex[];
+  height: number;
+  held_items: HeldItem[];
+  id: number;
+  is_default: boolean;
+  location_area_encounters: string;
+  moves: Move[];
+  name: string;
+  order: number;
+  past_types: any[];
+  species: Species;
+  sprites: Sprites;
+  stats: Stat[];
+  types: Type[];
+  weight: number;
 }
 
 export interface Ability {
-    ability: Species;
-    is_hidden: boolean;
-    slot: number;
+  ability: Species;
+  is_hidden: boolean;
+  slot: number;
 }
 
 export interface Species {
-    name: string;
-    url: string;
+  name: string;
+  url: string;
 }
 
 export interface GameIndex {
-    game_index: number;
-    version: Species;
+  game_index: number;
+  version: Species;
 }
 
 export interface HeldItem {
-    item: Species;
-    version_details: VersionDetail[];
+  item: Species;
+  version_details: VersionDetail[];
 }
 
 export interface VersionDetail {
-    rarity: number;
-    version: Species;
+  rarity: number;
+  version: Species;
 }
 
 export interface Move {
-    move: Species;
-    version_group_details: VersionGroupDetail[];
+  move: Species;
+  version_group_details: VersionGroupDetail[];
 }
 
 export interface VersionGroupDetail {
-    level_learned_at: number;
-    move_learn_method: Species;
-    version_group: Species;
+  level_learned_at: number;
+  move_learn_method: Species;
+  version_group: Species;
 }
 
 export interface GenerationV {
-    "black-white": Sprites;
+  "black-white": Sprites;
 }
 
 export interface GenerationIv {
-    "diamond-pearl": Sprites;
-    "heartgold-soulsilver": Sprites;
-    platinum: Sprites;
+  "diamond-pearl": Sprites;
+  "heartgold-soulsilver": Sprites;
+  platinum: Sprites;
 }
 
 export interface Versions {
-    "generation-i": GenerationI;
-    "generation-ii": GenerationIi;
-    "generation-iii": GenerationIii;
-    "generation-iv": GenerationIv;
-    "generation-v": GenerationV;
-    "generation-vi": { [key: string]: Home };
-    "generation-vii": GenerationVii;
-    "generation-viii": GenerationViii;
+  "generation-i": GenerationI;
+  "generation-ii": GenerationIi;
+  "generation-iii": GenerationIii;
+  "generation-iv": GenerationIv;
+  "generation-v": GenerationV;
+  "generation-vi": { [key: string]: Home };
+  "generation-vii": GenerationVii;
+  "generation-viii": GenerationViii;
 }
 
 export interface Sprites {
-    back_default: string;
-    back_female: string;
-    back_shiny: string;
-    back_shiny_female: string;
-    front_default: string;
-    front_female: string;
-    front_shiny: string;
-    front_shiny_female: string;
-    other?: Other;
-    versions?: Versions;
-    animated?: Sprites;
+  back_default: string;
+  back_female: string;
+  back_shiny: string;
+  back_shiny_female: string;
+  front_default: string;
+  front_female: string;
+  front_shiny: string;
+  front_shiny_female: string;
+  other?: Other;
+  versions?: Versions;
+  animated?: Sprites;
 }
 
 export interface GenerationI {
-    "red-blue": RedBlue;
-    yellow: RedBlue;
+  "red-blue": RedBlue;
+  yellow: RedBlue;
 }
 
 export interface RedBlue {
-    back_default: string;
-    back_gray: string;
-    back_transparent: string;
-    front_default: string;
-    front_gray: string;
-    front_transparent: string;
+  back_default: string;
+  back_gray: string;
+  back_transparent: string;
+  front_default: string;
+  front_gray: string;
+  front_transparent: string;
 }
 
 export interface GenerationIi {
-    crystal: Crystal;
-    gold: Gold;
-    silver: Gold;
+  crystal: Crystal;
+  gold: Gold;
+  silver: Gold;
 }
 
 export interface Crystal {
-    back_default: string;
-    back_shiny: string;
-    back_shiny_transparent: string;
-    back_transparent: string;
-    front_default: string;
-    front_shiny: string;
-    front_shiny_transparent: string;
-    front_transparent: string;
+  back_default: string;
+  back_shiny: string;
+  back_shiny_transparent: string;
+  back_transparent: string;
+  front_default: string;
+  front_shiny: string;
+  front_shiny_transparent: string;
+  front_transparent: string;
 }
 
 export interface Gold {
-    back_default: string;
-    back_shiny: string;
-    front_default: string;
-    front_shiny: string;
-    front_transparent?: string;
+  back_default: string;
+  back_shiny: string;
+  front_default: string;
+  front_shiny: string;
+  front_transparent?: string;
 }
 
 export interface GenerationIii {
-    emerald: OfficialArtwork;
-    "firered-leafgreen": Gold;
-    "ruby-sapphire": Gold;
+  emerald: OfficialArtwork;
+  "firered-leafgreen": Gold;
+  "ruby-sapphire": Gold;
 }
 
 export interface OfficialArtwork {
-    front_default: string;
-    front_shiny: string;
+  front_default: string;
+  front_shiny: string;
 }
 
 export interface Home {
-    front_default: string;
-    front_female: string;
-    front_shiny: string;
-    front_shiny_female: string;
+  front_default: string;
+  front_female: string;
+  front_shiny: string;
+  front_shiny_female: string;
 }
 
 export interface GenerationVii {
-    icons: DreamWorld;
-    "ultra-sun-ultra-moon": Home;
+  icons: DreamWorld;
+  "ultra-sun-ultra-moon": Home;
 }
 
 export interface DreamWorld {
-    front_default: string;
-    front_female: null | string;
+  front_default: string;
+  front_female: null | string;
 }
 
 export interface GenerationViii {
-    icons: DreamWorld;
+  icons: DreamWorld;
 }
 
 export interface Other {
-    dream_world: DreamWorld;
-    home: Home;
-    "official-artwork": OfficialArtwork;
+  dream_world: DreamWorld;
+  home: Home;
+  "official-artwork": OfficialArtwork;
 }
 
 export interface Stat {
-    base_stat: number;
-    effort: number;
-    stat: Species;
+  base_stat: number;
+  effort: number;
+  stat: Species;
 }
 
 export interface Type {
-    slot: number;
-    type: Species;
+  slot: number;
+  type: Species;
 }
 
 // https://pokeapi.co/docs/v2
 export async function getPokedexData(): Promise<PokedexApiResponse> {
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+  const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
 
-    // Recommendation: handle errors
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-    return res.json()
+  return res.json();
 }
 
-export async function getPokemonData(pokemonName: string): Promise<PokemonApiResponse> {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+export async function getPokemonData(
+  pokemonName: string
+): Promise<PokemonApiResponse> {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
 
-    // Recommendation: handle errors
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-    return res.json()
+  return res.json();
 }
 
 export async function getPokemonSpeciesData(pokemonName: string) {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
+  const res = await fetch(
+    `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`
+  );
 
-    // Recommendation: handle errors
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data')
-    }
+  // Recommendation: handle errors
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
 
-    return res.json()
+  return res.json();
 }
