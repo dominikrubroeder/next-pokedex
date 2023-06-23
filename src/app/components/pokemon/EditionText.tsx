@@ -15,7 +15,7 @@ export default async function PokemonEditionText({
         <hr className="mb-4" />
         {data.flavor_text_entries.map((entry, index) => {
           if (entry.language.name === "en")
-            return <div key={index}>{entry.version.name}</div>;
+            return <div key={index} className="w-max">{entry.version.name}</div>;
         })}
       </div>
 

@@ -2,6 +2,7 @@ import { getPokemonData, getPokemonSpeciesData } from "../../../../lib/data";
 import Image from "next/image";
 import PokemonStats from "@/app/components/pokemon/Stats";
 import PokemonEditionText from "@/app/components/pokemon/EditionText";
+import Accordion from "@/app/components/Accordion";
 
 export default async function Pokemon({
   params,
@@ -44,8 +45,9 @@ export default async function Pokemon({
       </section>
 
       <section className="mx-auto grid w-full gap-2 px-4">
-        <h2>Flavored Text</h2>
-        <PokemonEditionText pokemon={params.slug} />
+          <Accordion title={`${params.slug}'s appearance text`}>
+              <PokemonEditionText pokemon={params.slug} />
+          </Accordion>
       </section>
     </main>
   );
