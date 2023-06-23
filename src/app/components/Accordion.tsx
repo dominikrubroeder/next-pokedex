@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import {ChevronRightIcon} from "@heroicons/react/24/solid";
 interface AccordionProps {
   children: React.ReactNode;
   title: string
@@ -16,7 +17,7 @@ export default function Accordion({ children, title }: AccordionProps) {
       >
           <span>{title}</span>
 
-          <span>{isOpen ? '-' : '+'}</span>
+          <ChevronRightIcon className={`h-4 w-4 transition duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`} />
       </h2>
       <AnimatePresence>
         {isOpen && (
