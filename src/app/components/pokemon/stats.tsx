@@ -1,4 +1,7 @@
+'use client'
+
 import {Stat} from "../../../../lib/data";
+import {motion} from "framer-motion";
 
 interface PokemonStatsProps {
     stats: Stat[]
@@ -9,7 +12,11 @@ export default function PokemonStats({stats}: PokemonStatsProps) {
             <span className="shrink-0">{stat.stat.name}</span>
             <span className="font-bold">{stat.base_stat}</span>
             <span className="rounded-3xl bg-gray-100 relative w-full overflow-hidden h-4 inline-flex">
-                        <span className="absolute left-0 h-full bg-amber-400" style={{width: `${stat.base_stat}%`}}></span>
+                        <motion.span className="absolute left-0 h-full bg-amber-400" animate={{width: ['0%', `${stat.base_stat}%`]}} transition={{
+                            ease: "easeOut",
+                            duration: .6,
+                            delay: 0.06 * index
+                        }}></motion.span>
                     </span>
         </li>)}
     </ul>
