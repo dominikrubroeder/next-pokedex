@@ -1,10 +1,10 @@
 import {getPokemonData, getPokemonSpeciesData} from "../../../../lib/data";
 import Image from "next/image";
-import PokemonStats from "@/app/components/pokemon/stats";
+import PokemonStats from "@/app/components/pokemon/Stats";
+import PokemonEditionText from "@/app/components/pokemon/EditionText";
 
 export default async function Pokemon({params}: { params: { slug: string } }) {
     const data = await getPokemonData(params.slug)
-    const speciesData = await getPokemonSpeciesData(params.slug)
 
     return <main className="grid gap-8">
         <section className="mx-auto max-w-screen-lg">
@@ -25,25 +25,9 @@ export default async function Pokemon({params}: { params: { slug: string } }) {
             <PokemonStats stats={data.stats} />
         </section>
 
-        <section className="mx-auto grid gap-2">
+        <section className="mx-auto grid gap-2 w-full px-4">
             <h2>Flavored Text</h2>
-            <div className="flex gap-4">
-            <div>
-                <div className="font-bold">Edition</div>
-                <hr className="mb-4" />
-                {speciesData.flavor_text_entries.map((entry, index) => {
-                    if (entry.language.name === 'en') return <div key={index}>{entry.version.name}</div>
-                })}
-            </div>
-
-            <div>
-                <div className="font-bold">Text</div>
-                <hr className="mb-4" />
-                {speciesData.flavor_text_entries.map((entry, index) => {
-                    if (entry.language.name === 'en') return <div key={index}>{entry.flavor_text}</div>
-                })}
-            </div>
-            </div>
+            <PokemonEditionText pokemon={params.slug} />
         </section>
     </main>
 }
